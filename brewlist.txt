@@ -1,0 +1,24 @@
+# formulaes
+arduino-cli
+
+
+# casks
+arc
+audacity
+autodesk-fusion
+blender@lts
+crystalfetch
+font-hack-nerd-font
+gimp
+inkscape
+iterm2
+kicad
+ltspice
+lulu
+notion
+orcaslicer
+preform
+rectangle
+utm
+whatsapp
+xquartz
