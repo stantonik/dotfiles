@@ -1,5 +1,38 @@
 # formulaes
 arduino-cli
+blake3
+ca-certificates
+ccache
+cmake
+dfu-util
+expat
+fmt
+gettext
+git
+hiredis
+libunistring
+libusb
+libuv
+llvm
+lpeg
+luajit
+luv
+lz4
+mpdecimal
+neovim
+ninja
+openssl@3
+pcre2
+python@3.13
+readline
+sqlite
+tree-sitter
+unibilium
+utf8proc
+xxhash
+xz
+z3
+zstd
 
 
 # casks
