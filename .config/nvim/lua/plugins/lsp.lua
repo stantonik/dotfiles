@@ -1,4 +1,7 @@
 -- plugins/cmp.lua
+
+local servers = { "html", "cssls", "ts_ls", "pyright", "clangd", "marksman" }
+
 return {
     -- Mason: installs LSPs, DAPs, linters, etc.
     {
@@ -14,7 +17,7 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "clangd" }, -- you can add more here
+                ensure_installed = servers,
                 automatic_installation = true,
             })
         end,
@@ -23,6 +26,7 @@ return {
     -- LSP Config
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "mason-lspconfig.nvim" },
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -30,17 +34,14 @@ return {
             -- Show diagnostic floating windows when hovering over code
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
                 border = "rounded",
-                focusable = false,   -- Don't make the hover window focusable
+                focusable = false,
             })
 
-            -- Auto-setup for all mason-installed servers
-            require("mason-lspconfig").setup_handlers({
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        capabilities = capabilities,
-                    })
-                end,
-            })
+            for _, server in ipairs(servers) do
+                lspconfig[server].setup({
+                    capabilities = capabilities,
+                })
+            end
         end,
     },
 }

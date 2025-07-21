@@ -15,3 +15,7 @@ vim.keymap.set("n", "<C-f>", vim.lsp.buf.format, { desc = "Format" })
 vim.keymap.set("n", "<leader>Nd", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "<leader>nd", vim.diagnostic.goto_next)
 
+-- Show diagnostics on hover
+vim.keymap.set("n", "<leader>hd", function()
+  vim.diagnostic.open_float(nil, { focusable = false })
+end, { desc = "Show Hover Doc and Diagnostics" })
