@@ -44,5 +44,23 @@ return {
             end
         end,
     },
+    -- {
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     requires = { "nvim-lua/plenary.nvim" },
+    --     version = false,
+    --     config=function()
+    --         local null_ls = require("null-ls")
+
+    --         null_ls.setup({
+    --             sources = {
+    --                 null_ls.builtins.formatting.prettier,
+    --             },
+    --         })
+    --     end
+    -- }
+    vim.keymap.set("n", "<Leader>f", function()
+        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+    end, { buffer = bufnr, desc = "[lsp] format" })
+
 }
 

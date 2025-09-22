@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Doc" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
-vim.keymap.set("n", "<C-f>", vim.lsp.buf.format, { desc = "Format" })
+vim.keymap.set("n", "<leader>t", vim.lsp.buf.format, { desc = "Format" })
 
 -- Diagnostics
 vim.keymap.set("n", "<leader>Nd", vim.diagnostic.goto_prev)

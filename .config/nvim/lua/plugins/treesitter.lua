@@ -6,7 +6,7 @@ return {
         event = { "BufRead", "BufNewFile" },
         config = function()
             require'nvim-treesitter.configs'.setup {
-                ensure_installed = { "python", "javascript", "lua", "cpp", "c" },
+                ensure_installed = { "python", "javascript", "lua", "cpp", "c", "markdown", "html", "css" },
                 highlight = {
                     enable = true,  -- Enable Treesitter-based highlighting
                     additional_vim_regex_highlighting = false,  -- Disable old regex-based highlighting
