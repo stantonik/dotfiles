@@ -6,7 +6,10 @@ vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Diagnostics" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
 
 -- LSP
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+vim.keymap.set("n", "gd", function()
+  vim.cmd("vsplit")
+  vim.lsp.buf.definition()
+end, { desc = "Go to Definition (vsplit)" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover Doc" })
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "<leader>t", vim.lsp.buf.format, { desc = "Format" })

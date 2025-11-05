@@ -1,5 +1,12 @@
 BasedOnStyle: LLVM
-IndentWidth: 4
 BreakBeforeBraces: Allman
+IndentWidth: 4
+ContinuationIndentWidth: 4
+ColumnLimit: 120
+# AlignConsecutiveAssignments: true
+
+AlignAfterOpenBracket: DontAlign
 AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+AlignTrailingComments: true
 

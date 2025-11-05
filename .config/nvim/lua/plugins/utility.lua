@@ -13,8 +13,13 @@ return {
         end
     },
     {
-        'tpope/vim-commentary',
         'aperezdc/vim-template',
+        config=function()
+            vim.g.templates_directory="~/.config/nvim/templates"
+        end
+    },
+    {
+        'tpope/vim-commentary',
         'tpope/vim-surround',
     },
     { "EdenEast/nightfox.nvim" },

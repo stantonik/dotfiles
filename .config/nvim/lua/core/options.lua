@@ -36,3 +36,7 @@ vim.o.clipboard = "unnamedplus"  -- Use the system clipboard
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+
+-- Templates
+vim.g.templates_directory = "Users/stantonik/.config/nvim/templates"
+

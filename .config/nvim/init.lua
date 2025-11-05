@@ -1,4 +1,5 @@
 -- Load core settings
+require("options")
 require("core")
 
 vim.cmd.colorscheme("carbonfox")
