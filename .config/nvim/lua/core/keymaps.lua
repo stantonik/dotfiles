@@ -22,3 +22,10 @@ vim.keymap.set("n", "<leader>nd", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>hd", function()
   vim.diagnostic.open_float(nil, { focusable = false })
 end, { desc = "Show Hover Doc and Diagnostics" })
+
+-- CMP
+vim.keymap.set("i", "<Esc><Esc>", function()
+    require("luasnip").unlink_current()
+    return "<Esc>"
+end, { expr = true, silent = true })
+

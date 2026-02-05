@@ -3,15 +3,12 @@
 local servers = { "html", "cssls", "ts_ls", "pyright", "clangd", "marksman" }
 
 return {
-    -- Mason: installs LSPs, DAPs, linters, etc.
     {
         "williamboman/mason.nvim",
         config = function()
             require("mason").setup()
         end,
     },
-
-    -- Mason-LSPConfig bridge: tells Mason which LSPs to auto-install
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = { "williamboman/mason.nvim" },
@@ -22,8 +19,6 @@ return {
             })
         end,
     },
-
-    -- LSP Config
     {
         "neovim/nvim-lspconfig",
         dependencies = { "mason-lspconfig.nvim" },
@@ -31,7 +26,6 @@ return {
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            -- Show diagnostic floating windows when hovering over code
             vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
                 border = "rounded",
                 focusable = false,
@@ -42,25 +36,20 @@ return {
                     capabilities = capabilities,
                 })
             end
+
+            -- Diagnostics
+            vim.diagnostic.config({
+                virtual_text = false,
+                signs = true,
+                underline = true,
+                float = { border = "rounded", source = "always" },
+            })
+
+            -- LSP formatting
+            vim.api.nvim_create_user_command("LspFormat", function()
+                vim.lsp.buf.format({ async = true })
+            end, { desc = "Format current buffer using LSP" })
         end,
     },
-    -- {
-    --     "jose-elias-alvarez/null-ls.nvim",
-    --     requires = { "nvim-lua/plenary.nvim" },
-    --     version = false,
-    --     config=function()
-    --         local null_ls = require("null-ls")
-
-    --         null_ls.setup({
-    --             sources = {
-    --                 null_ls.builtins.formatting.prettier,
-    --             },
-    --         })
-    --     end
-    -- }
-    vim.keymap.set("n", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-    end, { buffer = bufnr, desc = "[lsp] format" })
-
 }
 

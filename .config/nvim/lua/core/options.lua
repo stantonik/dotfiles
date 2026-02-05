@@ -40,3 +40,32 @@ vim.g.maplocalleader = ","
 -- Templates
 vim.g.templates_directory = "Users/stantonik/.config/nvim/templates"
 
+-- enable treesitter folding
+-- Treesitter folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = true
+
+-- Open all folds by default
+vim.opt.foldlevelstart = 99
+
+-- Save only folds & cursor per file
+vim.opt.viewoptions = { "cursor", "folds" }
+
+-- Persist folds per file
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! loadview")
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.buftype == "" then
+      vim.cmd("mkview")
+    end
+  end,
+})
+
